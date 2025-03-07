@@ -5,4 +5,5 @@ numpy==1.21.2
 opencv-python-headless==4.5.5.64
 gunicorn==20.1.0
 python-dotenv==1.0.1
-werkzeug==2.0.3  # Asegúrate de que esta línea esté presente
+werkzeug==2.0.3
+requests  # Asegúrate de que esta línea esté presente
