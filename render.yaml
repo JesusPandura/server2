@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: detector-service
+    env: docker
+    buildCommand: docker build -t detector-service .
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120 app:app
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: WEB_CONCURRENCY
+        value: "1"
+      - key: PYTHON_VERSION
+        value: "3.9.16"
+    healthCheckPath: /health
+    plan: starter
+    disk:
+      name: tmp
+      mountPath: /tmp
+      sizeGB: 0.5
+    autoscaling:
+      min: 1
+      max: 1
